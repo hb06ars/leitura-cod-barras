@@ -59,7 +59,7 @@ canvas {
 <script>
 import Quagga from 'quagga'
   var lista =[];
-  
+
   export default {
     data () {
       return {
@@ -69,6 +69,7 @@ import Quagga from 'quagga'
       }
     },
     methods: {
+      
       iniciarLeitor () {
         this.esconder (true);
         this.cameraStatus = 1
@@ -76,10 +77,6 @@ import Quagga from 'quagga'
         inputStream: {
           name: 'Live',
           type: 'LiveStream',
-          // constraints: {
-          //   width: 300,
-          //   height: 300
-          // },
           target: document.querySelector('#scan')
         },
         frequency: 10,
@@ -89,11 +86,9 @@ import Quagga from 'quagga'
           ],
           multiple: false
         }
-        // numOfWorkers: navigator.hardwareConcurrency,
-        // locate: false
         }, (err) => {
         if (err) {
-          console.log(err)
+          alert(err)
           return
         }
         console.log('Initialization finished. Ready to start')
@@ -141,6 +136,7 @@ import Quagga from 'quagga'
         }
       },
 
+      
       baixar(){
         lista = JSON.parse(localStorage.getItem("lista"));
         console.log(lista)
