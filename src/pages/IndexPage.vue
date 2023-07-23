@@ -32,9 +32,9 @@ canvas {
 </style>
 
 <template>
-  <div id="excel" class="row items-center" style="height: 20vh; padding:10px; display:none">
-    <div class="col-12 text-center" style="font-size:30px;">    
-      <table id="customers" style="border: 1 solid;  overflow:auto"></table>
+  <div id="excel" class="row items-center" style="max-width:100%; height: 20vh; padding:10px; display:none">
+    <div class="col-12 text-center" style="font-size:30px; overflow:auto; max-width:100%; ">    
+      <table id="customers" style="max-width:100%; border: 1 solid; "></table>
       &nbsp;
     </div>
     <div class="col-12 text-center">    
