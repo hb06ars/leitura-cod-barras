@@ -132,10 +132,12 @@ import Quagga from 'quagga'
           document.getElementById("ean").value = '';
           document.getElementById("btsalvar").style.display = "none";
           document.getElementById("div_esconde").style.display = "none";
+          document.getElementById("download").style.display = "none";
         } else{
           document.getElementById("ean").value = this.code;
           document.getElementById("btsalvar").style.display = "block";
           document.getElementById("div_esconde").style.display = "block";
+          document.getElementById("download").style.display = "block";
         }
       },
 
