@@ -163,7 +163,6 @@ import Quagga from 'quagga'
         document.getElementById("ean").value = '';
         document.getElementById("valor").value = '';
 
-        
       },
       esconder (esconde){
         if(esconde){
