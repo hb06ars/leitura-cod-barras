@@ -31,7 +31,30 @@ canvas {
 }
 </style>
 
+
 <template>
+
+  <div id="existente" class="row items-center" style="max-width:100%; height: 20vh; padding:10px; display:none">
+    <div class="col-12 text-left" style="font-size:30px; overflow:auto; max-width:100%; ">    
+      <table>
+        <tr>
+          <td>Produto:</td><td>&nbsp;<span id="prodexistente">-</span></td>
+        </tr>
+        <tr>
+          <td>Valor:</td><td>&nbsp;R$ <span id="valorexistente">-</span></td>
+        </tr>
+        <tr>
+          <td>EAN:</td> <td>&nbsp;<span id="eanexistente">-</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-12 text-center">    
+        <q-btn id="voltar" @click="sairexistente()" color="primary" icon="home" label="VOLTAR" class="full-width" size="lg"/>
+    </div>
+  </div>
+
+
+
   <div id="excel" class="row items-center" style="max-width:100%; height: 20vh; padding:10px; display:none">
     <div class="col-12 text-center" style="font-size:30px; overflow:auto; max-width:100%; ">    
       <table id="customers" style="max-width:100%; border: 1 solid; "></table>
@@ -140,6 +163,21 @@ import Quagga from 'quagga'
         document.getElementById("ean").value = this.code;
         this.cameraStatus = 0
         this.onStop()
+
+        if(localStorage.getItem("lista") != null){
+          lista = JSON.parse(localStorage.getItem("lista"))
+          var encontrado = lista.filter(item => (item.ean == this.code));
+          if(encontrado != null){
+            document.getElementById("eanexistente").innerHTML = encontrado[0].ean;
+            document.getElementById("valorexistente").innerHTML = encontrado[0].valor;
+            document.getElementById("prodexistente").innerHTML = encontrado[0].produto;
+
+            document.getElementById("existente").style.display = 'block';
+            document.getElementById("pagina").style.display = 'none';
+            document.getElementById("excel").style.display = 'none';    
+          }
+        }
+        
       },
       onStop () {
         this.esconder (false);
@@ -223,6 +261,12 @@ import Quagga from 'quagga'
 
       voltar(){
         document.getElementById("pagina").style.display = 'block';
+        document.getElementById("excel").style.display = 'none';
+      },
+
+      sairexistente(){
+        document.getElementById("pagina").style.display = 'block';
+        document.getElementById("existente").style.display = 'none';
         document.getElementById("excel").style.display = 'none';
       },
 
